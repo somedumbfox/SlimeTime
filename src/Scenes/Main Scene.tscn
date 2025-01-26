@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk0066psh0iu1"]
+
+[ext_resource type="Texture2D" uid="uid://bu1sl3u8i75bd" path="res://Backgrounds/test_desert_enviro (1).png" id="1_i7xih"]
+[ext_resource type="PackedScene" uid="uid://bkbkjvdtwljeb" path="res://Scenes/Player/Player.tscn" id="2_swp51"]
+
+[node name="Main Scene" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i7xih")
+expand_mode = 2
+
+[node name="PlayerScene" parent="." instance=ExtResource("2_swp51")]
+position = Vector2(264, 459)
