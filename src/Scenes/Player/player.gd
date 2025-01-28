@@ -10,13 +10,18 @@ func _process(delta: float) -> void:
 	get_input()
 
 func get_input():
+		
 	if Judgement.get_is_Ready() == false:
 		return
 	if Input.is_action_just_pressed("player_react"):
-		var judgement = Judgement.get_Judgement()
+		Judgement.set_is_Ready(false)
+		var judgement = Judgement.get_judgment()
 		var score = Judgement.get_reaction_time()
 		if score > 0:
 			Score.increment_time(score)
 		if judgement:
 			return
 		Score.increment_hit(1) #TODO Implement rest of hit logic
+
+func hit_player():
+	Score.increment_hit(1)

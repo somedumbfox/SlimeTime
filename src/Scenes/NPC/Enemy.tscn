@@ -1,23 +1,79 @@
-[gd_scene load_steps=7 format=3 uid="uid://da0215jomcnt0"]
+[gd_scene load_steps=17 format=3 uid="uid://da0215jomcnt0"]
 
 [ext_resource type="Script" path="res://Scenes/NPC/enemy.gd" id="1_45wlh"]
-[ext_resource type="Texture2D" uid="uid://b7y1t4g3oljlk" path="res://icon.svg" id="2_bc1qc"]
+[ext_resource type="Texture2D" uid="uid://cna6gh6cf8rxd" path="res://Sprites/enemy.png" id="2_ega3r"]
+[ext_resource type="AudioStream" uid="uid://dp0eax7s3k0w4" path="res://SFX/Beeps/beep-00.wav" id="3_l0rk7"]
+[ext_resource type="Texture2D" uid="uid://crj3id8ytf8sg" path="res://Sprites/overhead timing prompt ui.png" id="3_xrylx"]
+[ext_resource type="AudioStream" uid="uid://b8o3ub28nyrxt" path="res://SFX/Beeps/beep-01.wav" id="4_qshwy"]
+[ext_resource type="AudioStream" uid="uid://cdp0a40ap3ovq" path="res://SFX/Beeps/beep-02.wav" id="5_6lvyq"]
+[ext_resource type="AudioStream" uid="uid://djk614abufxgg" path="res://SFX/Beeps/beep-03.wav" id="6_25faq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t6auo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bc1qc")
+"texture": ExtResource("2_ega3r")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_jfy8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Status:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Status:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_f4djw"]
-resource_name = "Round 1 React 1"
+resource_name = "R1_C1"
 length = 4.0
-step = 0.25
+step = 0.1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -25,7 +81,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [0.5],
@@ -38,65 +94,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RichTextLabel:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1, 1.75, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [".", "..", "...", "!!!"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer:stream")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_jfy8y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RichTextLabel:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/path = NodePath("AudioStreamPlayer:stream")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 0.7, 1.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [null]
+"values": [ExtResource("3_l0rk7"), ExtResource("4_qshwy"), ExtResource("5_6lvyq"), ExtResource("6_25faq")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -105,17 +110,85 @@ tracks/2/path = NodePath("AudioStreamPlayer:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.7, 1, 1.6, 1.9, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Status:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [&"normal"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Status:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5, 0.7, 1.4, 1.6, 2.7, 3, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2, 0, 3, 0, 4, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1jw2g"]
 _data = {
-"RESET": SubResource("Animation_jfy8y"),
-"Round 1 React 1": SubResource("Animation_f4djw")
+"R1_C1": SubResource("Animation_f4djw"),
+"RESET": SubResource("Animation_jfy8y")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5cnr"]
+atlas = ExtResource("3_xrylx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2jch"]
+atlas = ExtResource("3_xrylx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rn5i"]
+atlas = ExtResource("3_xrylx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnlet"]
+atlas = ExtResource("3_xrylx")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xwy7"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5cnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2jch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rn5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnlet")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 0.0
+}]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_45wlh")
@@ -127,6 +200,10 @@ sprite_frames = SubResource("SpriteFrames_t6auo")
 libraries = {
 "": SubResource("AnimationLibrary_1jw2g")
 }
+
+[node name="Status" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -24)
+sprite_frames = SubResource("SpriteFrames_0xwy7")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -58.0
