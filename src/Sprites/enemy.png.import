@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu1sl3u8i75bd"
-path="res://.godot/imported/test_desert_enviro (1).png-0dd950544d426cbd6578855fb8affe04.ctex"
+uid="uid://cna6gh6cf8rxd"
+path="res://.godot/imported/enemy.png-41fe8dc360e641bde1ffa5e18678b763.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Backgrounds/test_desert_enviro (1).png"
-dest_files=["res://.godot/imported/test_desert_enviro (1).png-0dd950544d426cbd6578855fb8affe04.ctex"]
+source_file="res://Sprites/enemy.png"
+dest_files=["res://.godot/imported/enemy.png-41fe8dc360e641bde1ffa5e18678b763.ctex"]
 
 [params]
 

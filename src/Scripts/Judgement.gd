@@ -15,10 +15,11 @@ func _ready() -> void:
 	is_ready = false
 	timer_window = Timer.new()
 	timer_window.autostart = false
-	timer_react_begin = 0
-	timer_react_end = 0
+	timer_react_begin = -1
+	timer_react_end = -1
 	timer_window.one_shot = true
-	timer_window.connect("timeout", on_timer_timeout, 0)
+	timer_window.timeout.connect(on_timer_timeout)
+	add_child(timer_window)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,6 +42,9 @@ func start_window():
 #End the timer for reaction
 func on_timer_timeout():
 	is_late = true
+	is_ready = false
+	if(timer_react_end == -1):
+		get_tree().call_group("hit_player", "hit_player")
 	
 func get_is_Early():
 	return is_early

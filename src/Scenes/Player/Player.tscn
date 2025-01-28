@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkbkjvdtwljeb"]
 
-[ext_resource type="Texture2D" uid="uid://b7y1t4g3oljlk" path="res://icon.svg" id="1_73myq"]
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_hiefs"]
+[ext_resource type="Texture2D" uid="uid://dmwcdqh5i76xr" path="res://Sprites/goobert.png" id="2_7aml5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1c327"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_73myq")
+"texture": ExtResource("2_7aml5")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="PlayerScene" type="Node2D"]
+[node name="PlayerScene" type="Node2D" groups=["hit_player"]]
 script = ExtResource("1_hiefs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

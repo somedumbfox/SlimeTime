@@ -1,18 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk0066psh0iu1"]
+[gd_scene load_steps=5 format=3 uid="uid://bk0066psh0iu1"]
 
-[ext_resource type="Texture2D" uid="uid://bu1sl3u8i75bd" path="res://Backgrounds/test_desert_enviro (1).png" id="1_i7xih"]
+[ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_18gge"]
+[ext_resource type="Texture2D" uid="uid://c3ydyr16jshc1" path="res://Backgrounds/test_desert_enviro.png" id="1_36ehq"]
 [ext_resource type="PackedScene" uid="uid://bkbkjvdtwljeb" path="res://Scenes/Player/Player.tscn" id="2_swp51"]
+[ext_resource type="PackedScene" uid="uid://da0215jomcnt0" path="res://Scenes/NPC/Enemy.tscn" id="3_wq4ir"]
 
 [node name="Main Scene" type="Node"]
+script = ExtResource("1_18gge")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_i7xih")
-expand_mode = 2
+anchors_preset = -1
+anchor_left = 0.00416667
+anchor_right = 0.00416667
+offset_right = 440.0
+offset_bottom = 256.0
+size_flags_horizontal = 6
+texture = ExtResource("1_36ehq")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_swp51")]
-position = Vector2(264, 459)
+position = Vector2(120, 176)
+
+[node name="Enemy" parent="." instance=ExtResource("3_wq4ir")]
+position = Vector2(304, 176)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(224, 128)
+zoom = Vector2(4.5, 4.5)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 88.0
+offset_top = 200.0
+offset_right = 280.0
+offset_bottom = 248.0
+text = "Score: %d
+Times Hit: %b"
+
+[node name="InitiationTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="InitiationTimer" to="." method="_on_initiation_timer_timeout"]
